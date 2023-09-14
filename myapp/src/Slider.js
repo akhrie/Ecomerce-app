@@ -1,0 +1,123 @@
+
+import React, { useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { Link } from 'react-router-dom';
+
+function Slider() {
+  useEffect(() => {
+    const items = document.querySelectorAll('.carousel .carousel-item');
+    items.forEach((el) => {
+      const minPerSlide = 4;
+      let next = el.nextElementSibling;
+      for (let i = 1; i < minPerSlide; i++) {
+        if (!next) {
+          // Wrap carousel by using the first child
+          next = items[0];
+        }
+        let cloneChild = next.cloneNode(true);
+        el.appendChild(cloneChild.children[0]);
+        next = next.nextElementSibling;
+      }
+    });
+
+    // Initialize the Bootstrap carousel
+    const recipeCarousel = new bootstrap.Carousel(document.getElementById('recipeCarousel'), {
+      interval: 2000, // Set the interval for sliding
+    });
+  }, []);
+
+  return (
+    <div>
+      <div className="container text-center my-3">
+      <div className="row mx-auto my-auto justify-content-center">
+        <div id="recipeCarousel" className="carousel slide" data-bs-ride="carousel">
+          <div className="carousel-inner" role="listbox">
+            <div className="carousel-item active">
+              <div className="col-md-3">
+                <div className="card">
+                  <div className="card-img">
+                  <a Link to="/fruits"> 
+  <img src={process.env.PUBLIC_URL + '/Image/fruit.jpeg'} className="img-fluid" alt="Fruits" />
+</a>
+                  </div>
+                  <div className="card-img-overlay">Fruits</div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="col-md-3">
+                <div className="card">
+                  <div className="card-img">
+                  <a Link to="/vegies">
+                            <img src={process.env.PUBLIC_URL + '/Image/vegies.jpg'} className="img-fluid" alt="Vegetables" />
+                </a>
+                  </div>
+                  <div className="card-img-overlay">Vegetables</div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="col-md-3">
+                <div className="card">
+                  <div className="card-img">
+                  <a Link to="/Meats">
+                  <img src={process.env.PUBLIC_URL + '/Image/meat.jpeg'} className="img-fluid" alt="Meats, Fish & Egg" />
+            </a>
+                  </div>
+                  <div className="card-img-overlay">Meats,Fish & Egg</div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="col-md-3">
+                <div className="card">
+                  <div className="card-img">
+                  <a Link to="/Rice">
+                  <img src={process.env.PUBLIC_URL + '/Image/rice.jpg'} className="img-fluid" alt="Rice, Atta & Dal" />
+            </a>
+                  </div>
+                  <div className="card-img-overlay">Rice,Atta & Dal</div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="col-md-3">
+                <div className="card">
+                  <div className="card-img">
+                  <a Link to="/local">
+                  <img src={process.env.PUBLIC_URL + '/Image/organic.jpg'} className="img-fluid" alt="Local & Organic" />
+           </a>
+                  </div>
+                  <div className="card-img-overlay">Local & Organic </div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="col-md-3">
+                <div className="card">
+                  <div className="card-img">
+                  <a Link to="/Bakery">
+                  <img src={process.env.PUBLIC_URL + '/Image/backery.jpg'} className="img-fluid" alt="Bakery" />
+                  </a>
+                  </div>
+                  <div className="card-img-overlay">Backery</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a className="carousel-control-prev bg-transparent w-aut" Link to="#recipeCarousel" role="button" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true" />
+          </a>
+          <a className="carousel-control-next bg-transparent w-aut" Link to="#recipeCarousel" role="button" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true" />
+          </a>
+        </div>
+      </div>		
+  
+</div>
+</div>
+);
+}
+
+export default Slider;
